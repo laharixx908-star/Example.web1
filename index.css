@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  :root {
+    --neon-pink: #ff00ff;
+    --neon-blue: #00ffff;
+    --neon-purple: #9d00ff;
+    --neon-green: #39ff14;
+    --bg-dark: #050505;
+    --bg-card: #121212;
+  }
+
+  body {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    cursor: none; /* Hide default cursor */
+    overflow-x: hidden;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-blue) transparent;
+  }
+}
+
+@layer utilities {
+  .text-neon-blue {
+    text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue);
+  }
+  .text-neon-pink {
+    text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink);
+  }
+  .border-neon-blue {
+    box-shadow: 0 0 5px var(--neon-blue), inset 0 0 5px var(--neon-blue);
+  }
+  .border-neon-pink {
+    box-shadow: 0 0 5px var(--neon-pink), inset 0 0 5px var(--neon-pink);
+  }
+  .bg-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .license-plate {
+    background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 50%, #e0e0e0 100%);
+    border: 8px solid #333;
+    border-radius: 12px;
+    box-shadow: 
+      inset 0 0 10px rgba(0,0,0,0.2),
+      0 10px 30px rgba(0,0,0,0.5),
+      0 0 40px rgba(0,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .license-plate::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 2px solid #aaa;
+    border-radius: 6px;
+    pointer-events: none;
+  }
+}
+
+.parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050505 100%);
+  z-index: -1;
+}
+
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+  z-index: 999;
+}
